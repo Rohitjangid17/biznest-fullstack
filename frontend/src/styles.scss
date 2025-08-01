@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    // margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Normal outline border */
+.mat-form-field-appearance-outline .mat-form-field-outline,
+.mat-form-field-appearance-outline .mat-form-field-outline-start,
+.mat-form-field-appearance-outline .mat-form-field-outline-end {
+    border-color: #1E2A3A !important;
+}
+
+/* On focus/click: keep the thick outline border same color */
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick,
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-start,
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-end {
+    border-color: #1E2A3A !important;
+}
+
+/* Bottom underline ripple (e.g. for underline appearance or focus animation) */
+.mat-form-field-ripple {
+    background-color: #1E2A3A !important;
+}
+
+/* Optional: input label color on focus */
+.mat-form-field.mat-focused .mat-form-field-label {
+    color: #1E2A3A !important;
+}
+
+/* Optional: input text caret (blinking cursor) color */
+input.mat-input-element {
+    caret-color: #1E2A3A;
+}

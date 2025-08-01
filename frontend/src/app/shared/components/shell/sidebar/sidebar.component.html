@@ -1,0 +1,13 @@
+<mat-nav-list class="sidebar-scroll !px-1 pt-4 space-y-1">
+    <ng-container *ngFor="let menu of menuList">
+        <a mat-list-item [routerLink]="menu.path" routerLinkActive="active-link"
+            class="flex items-center gap-3 px-4 py-3 transition-all duration-200 text-white hover:bg-[#2E3A4A] !hover:rounded-xl group font-medium">
+            <mat-icon class="text-white text-lg transition-all !align-middle">
+                {{ menu.icon }}
+            </mat-icon>
+            <span class="text-white text-sm tracking-wide !align-middle">
+                {{ menu.label }}
+            </span>
+        </a>
+    </ng-container>
+</mat-nav-list>

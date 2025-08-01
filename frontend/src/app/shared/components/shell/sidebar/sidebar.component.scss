@@ -1,0 +1,10 @@
+::ng-deep .mat-mdc-nav-list .mat-mdc-list-item {
+    border-radius: 0 !important;
+    color: white;
+}
+
+::ng-deep .mat-mdc-nav-list .mat-mdc-list-item:hover,
+::ng-deep .mat-mdc-nav-list .mat-mdc-list-item.active-link {
+    background-color: #2E3A4A !important;
+    border-radius: 0.5rem !important;
+}

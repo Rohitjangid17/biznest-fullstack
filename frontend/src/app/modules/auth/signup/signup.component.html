@@ -1,0 +1,56 @@
+<div class="min-h-screen flex items-center justify-center bg-[#f4f7fe] px-4">
+    <div class="w-full max-w-sm bg-white rounded-3xl shadow-xl p-8">
+        <!-- Logo -->
+        <div class="flex justify-center mb-6">
+            <img src="/images/biznest_logo.png" alt="BizNest Logo" class="h-12" />
+        </div>
+
+        <h2 class="text-center text-3xl font-bold text-[#1E1E1E]">Create Your Account</h2>
+        <p class="text-center text-sm text-gray-500 mt-1 mb-8">
+            Join BizNest and manage your local services, clients, and bookings.
+        </p>
+
+        <form>
+            <!-- Name -->
+            <mat-form-field appearance="outline" class="w-full custom-input-field">
+                <input matInput placeholder="Full Name" type="text" class="custom-input" />
+            </mat-form-field>
+
+            <!-- Email -->
+            <mat-form-field appearance="outline" class="w-full custom-input-field">
+                <input matInput placeholder="Email" type="email" class="custom-input" />
+            </mat-form-field>
+
+            <!-- Password -->
+            <mat-form-field appearance="outline" class="w-full custom-input-field">
+                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" class="custom-input" />
+                <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
+                    [attr.aria-label]="'Toggle password visibility'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <!-- Confirm Password -->
+            <mat-form-field appearance="outline" class="w-full custom-input-field">
+                <input matInput placeholder="Confirm Password" [type]="hideConfirm ? 'password' : 'text'"
+                    class="custom-input" />
+                <button mat-icon-button matSuffix type="button" (click)="hideConfirm = !hideConfirm"
+                    [attr.aria-label]="'Toggle confirm password visibility'" [attr.aria-pressed]="hideConfirm">
+                    <mat-icon>{{ hideConfirm ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <!-- Signup Button -->
+            <button mat-raised-button color="primary"
+                class="w-full h-11 !bg-[#1E2A3A] !hover:bg-[#111926] !text-white !rounded-lg !transition !duration-200">
+                Sign Up
+            </button>
+        </form>
+
+        <!-- Login Link -->
+        <p class="text-center text-sm text-gray-600 mt-6">
+            Already have an account?
+            <a routerLink="/login" class="text-[#0058ca] font-semibold hover:underline">Log In</a>
+        </p>
+    </div>
+</div>

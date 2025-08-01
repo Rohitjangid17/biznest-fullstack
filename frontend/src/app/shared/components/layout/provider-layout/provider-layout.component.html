@@ -1,0 +1,21 @@
+<mat-sidenav-container class="h-screen" [hasBackdrop]="isSmallScreen">
+    <mat-sidenav #sidenav [mode]="isSmallScreen ? 'over' : 'side'" [opened]="!isSmallScreen"
+        class="sidebar-scroll !sm:w-4/5 !w-60 !rounded-none !bg-[#1E2A3A] shadow-md transition-all duration-300 z-40">
+        <app-sidebar></app-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <!-- Overlay -->
+        <div *ngIf="isSmallScreen && sidenav.opened" class="fixed inset-0 bg-black bg-opacity-50 z-30"
+            (click)="sidenav.close()">
+        </div>
+
+        <app-header (toggleSidebar)="sidenav.toggle()"></app-header>
+
+        <main class="p-4 bg-gray-100 min-h-screen">
+            <router-outlet></router-outlet>
+        </main>
+
+        <app-footer></app-footer>
+    </mat-sidenav-content>
+</mat-sidenav-container>
