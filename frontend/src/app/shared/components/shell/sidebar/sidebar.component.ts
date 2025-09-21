@@ -33,8 +33,24 @@ export class SidebarComponent implements OnInit {
     let menuObservable;
 
     switch (role) {
+      case 'super-admin':
+        menuObservable = this._mockApiService.getSuperAdminMenu();
+        break;
+
       case 'admin':
         menuObservable = this._mockApiService.getAdminMenu();
+        break;
+
+      case 'finance':
+        menuObservable = this._mockApiService.getFinanceMenu();
+        break;
+
+      case 'support':
+        menuObservable = this._mockApiService.getSupportMenu();
+        break;
+
+      case 'marketing':
+        menuObservable = this._mockApiService.getMarketingMenu();
         break;
 
       case 'provider':
