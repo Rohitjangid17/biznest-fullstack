@@ -1,13 +1,37 @@
 <mat-nav-list class="sidebar-scroll !px-1 pt-4 space-y-1">
-    <ng-container *ngFor="let menu of menuList">
-        <a mat-list-item [routerLink]="menu.path" routerLinkActive="active-link"
-            class="flex items-center gap-3 px-4 py-3 transition-all duration-200 text-white hover:bg-[#2E3A4A] !hover:rounded-xl group font-medium">
-            <mat-icon class="text-white text-lg transition-all !align-middle">
-                {{ menu.icon }}
-            </mat-icon>
-            <span class="text-white text-sm tracking-wide !align-middle">
-                {{ menu.label }}
-            </span>
-        </a>
-    </ng-container>
+  <ng-container *ngFor="let menu of menuList">
+    <ng-container *ngTemplateOutlet="renderMenu; context: { $implicit: menu, level: 0 }"></ng-container>
+  </ng-container>
 </mat-nav-list>
+
+<ng-template #renderMenu let-menu let-level="level">
+  <!-- If menu has children -->
+  <ng-container *ngIf="menu.children.length > 0; else singleMenu">
+    <!-- Remove multi to allow only one open at a time -->
+    <mat-accordion class="!bg-transparent">
+      <mat-expansion-panel class="!bg-transparent !shadow-none">
+        <mat-expansion-panel-header class="flex items-center gap-3" [ngStyle]="{'padding-left.px': 16 + level * 16}">
+          <mat-icon class="text-white text-lg">{{ menu.icon }}</mat-icon>
+          <span class="text-white text-sm">{{ menu.label }}</span>
+        </mat-expansion-panel-header>
+
+        <mat-nav-list>
+          <ng-container *ngFor="let child of menu.children">
+            <ng-container *ngTemplateOutlet="renderMenu; context: { $implicit: child, level: level + 1 }">
+            </ng-container>
+          </ng-container>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </ng-container>
+
+  <!-- Single menu item -->
+  <ng-template #singleMenu>
+    <a mat-list-item [routerLink]="menu.path" routerLinkActive="active-link"
+      [ngStyle]="{'padding-left.px': 16 + level * 16}"
+      class="flex items-center gap-3 !text-white hover:bg-[#2E3A4A] !hover:rounded-xl text-sm !cursor-pointer">
+      <mat-icon class="text-white text-base">{{ menu.icon }}</mat-icon>
+      <span class="!text-white">{{ menu.label }}</span>
+    </a>
+  </ng-template>
+</ng-template>
